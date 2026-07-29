@@ -1,0 +1,13 @@
+let
+    // Replace the path below with the extracted package path.
+    DataFilePath = "C:\Portfolio\Stryker_Territorial_Targeting_Portfolio_RUNNABLE\PowerBI_Build_Kit\targeting_scored_output.csv",
+    Source = Csv.Document(File.Contents(DataFilePath), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    Types = Table.TransformColumnTypes(Headers, {
+        {"state_fips", type text}, {"state_abbr", type text}, {"state_name", type text}, {"territory", type text},
+        {"ecomm_sales", Int64.Type}, {"online_orders", Int64.Type}, {"growth_pct", type number},
+        {"market_potential", Int64.Type}, {"coverage_pct", type number}, {"whitespace_pct", type number},
+        {"priority_score", Int64.Type}, {"priority_tier", type text}, {"recommended_action", type text}
+    })
+in
+    Types

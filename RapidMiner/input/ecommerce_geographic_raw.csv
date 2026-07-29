@@ -1,0 +1,52 @@
+state_fips,state_abbr,state_name,territory,ecomm_sales,online_orders,growth_pct,market_potential,coverage_pct
+01,AL,Alabama,Southeast,29000000,2811,22,59,55
+02,AK,Alaska,West,18000000,5135,14,44,44
+04,AZ,Arizona,Mountain & Plains,39000000,4460,25,79,43
+05,AR,Arkansas,Southeast,13000000,3394,15,74,39
+06,CA,California,West,92000000,9600,18,94,67
+08,CO,Colorado,Mountain & Plains,47000000,1653,16,61,73
+09,CT,Connecticut,Northeast,36000000,3977,8,46,62
+10,DE,Delaware,Northeast,25000000,2401,18,74,51
+11,DC,District of Columbia,Northeast,14000000,4725,10,59,40
+12,FL,Florida,Southeast,72000000,7580,19,88,58
+13,GA,Georgia,Southeast,51000000,5520,23,86,49
+15,HI,Hawaii,West,37000000,1408,21,74,63
+16,ID,Idaho,West,26000000,3732,13,59,52
+17,IL,Illinois,Central,63000000,6450,14,80,66
+18,IN,Indiana,Central,43000000,4480,15,72,69
+19,IA,Iowa,Central,32000000,2904,7,57,58
+20,KS,Kansas,Mountain & Plains,21000000,5228,17,42,47
+21,KY,Kentucky,Southeast,49000000,3652,9,70,75
+22,LA,Louisiana,Southeast,38000000,2076,19,55,64
+23,ME,Maine,Northeast,27000000,4400,11,83,53
+24,MD,Maryland,Northeast,16000000,2824,21,68,42
+25,MA,Massachusetts,Northeast,44000000,5148,13,53,70
+26,MI,Michigan,Central,33000000,3572,5,81,59
+27,MN,Minnesota,Central,22000000,1996,15,66,48
+28,MS,Mississippi,Southeast,50000000,4320,7,51,76
+29,MO,Missouri,Central,39000000,2744,17,79,65
+30,MT,Montana,West,28000000,5068,9,64,54
+31,NE,Nebraska,Mountain & Plains,17000000,3492,19,49,43
+32,NV,Nevada,West,45000000,1916,11,77,71
+33,NH,New Hampshire,Northeast,34000000,4240,21,62,60
+34,NJ,New Jersey,Northeast,23000000,2664,13,47,49
+35,NM,New Mexico,Mountain & Plains,12000000,4988,5,75,38
+36,NY,New York,Northeast,79000000,7900,12,90,74
+37,NC,North Carolina,Southeast,49000000,5310,22,84,52
+38,ND,North Dakota,Mountain & Plains,18000000,4160,17,73,44
+39,OH,Ohio,Central,47000000,5120,15,75,57
+40,OK,Oklahoma,Southeast,35000000,4908,19,43,61
+41,OR,Oregon,West,24000000,3332,11,71,50
+42,PA,Pennsylvania,Northeast,58000000,5980,16,82,61
+44,RI,Rhode Island,Northeast,19000000,1591,12,58,45
+45,SC,South Carolina,Southeast,47000000,3915,22,43,73
+46,SD,South Dakota,Mountain & Plains,36000000,2339,14,71,62
+47,TN,Tennessee,Southeast,25000000,4663,6,56,51
+48,TX,Texas,Southeast,84000000,8750,21,91,62
+49,UT,Utah,Mountain & Plains,42000000,1511,8,69,68
+50,VT,Vermont,Northeast,31000000,3835,18,54,57
+51,VA,Virginia,Northeast,20000000,2259,10,82,46
+53,WA,Washington,West,26000000,2094,19,84,52
+54,WV,West Virginia,Northeast,15000000,4418,11,69,41
+55,WI,Wisconsin,Central,43000000,2842,21,54,69
+56,WY,Wyoming,Mountain & Plains,32000000,5166,13,82,58

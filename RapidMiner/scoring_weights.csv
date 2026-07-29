@@ -1,0 +1,6 @@
+component,field,normalization_ceiling,weight
+E-commerce sales,ecomm_sales,92000000,0.28
+Online orders,online_orders,9600,0.2
+YoY growth,growth_pct,25,0.2
+Market potential,market_potential,100,0.2
+Whitespace,whitespace_pct,100,0.12

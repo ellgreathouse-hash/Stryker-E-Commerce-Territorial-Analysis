@@ -1,0 +1,14 @@
+field,data_type,data_category
+state_fips,Text,
+state_abbr,Text,State or Province
+state_name,Text,State or Province
+territory,Text,
+ecomm_sales,Whole number,Currency
+online_orders,Whole number,
+growth_pct,Decimal number,
+market_potential,Whole number,
+coverage_pct,Decimal number,
+whitespace_pct,Decimal number,
+priority_score,Whole number,
+priority_tier,Text,
+recommended_action,Text,

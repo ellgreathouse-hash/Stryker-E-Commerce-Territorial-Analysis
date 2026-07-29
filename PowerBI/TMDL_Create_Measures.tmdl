@@ -1,0 +1,21 @@
+createOrReplace
+	ref table Targeting
+		measure 'Total Sales' = SUM(Targeting[ecomm_sales])
+			formatString: $#,0
+
+		measure 'Total Orders' = SUM(Targeting[online_orders])
+			formatString: #,0
+
+		measure 'Priority Markets' = CALCULATE(DISTINCTCOUNT(Targeting[state_abbr]), Targeting[priority_score] >= 70)
+			formatString: 0
+
+		measure 'Average Priority Score' = AVERAGE(Targeting[priority_score])
+			formatString: 0.0
+
+		measure 'Weighted Growth' = DIVIDE(SUMX(Targeting, Targeting[growth_pct] * Targeting[ecomm_sales]), [Total Sales])
+			formatString: 0.0
+
+		measure 'Recommended Focus' = ```
+			VAR TerritorySummary = SUMMARIZE(Targeting, Targeting[territory], "TerritoryPriority", SUM(Targeting[priority_score]))
+			RETURN MAXX(TOPN(1, TerritorySummary, [TerritoryPriority], DESC), Targeting[territory])
+			```

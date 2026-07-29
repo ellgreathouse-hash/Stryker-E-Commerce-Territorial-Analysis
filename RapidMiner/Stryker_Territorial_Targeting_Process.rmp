@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<process version="10.3.001">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="10.3.001" expanded="true" name="Process">
+    <process expanded="true">
+      <operator activated="true" class="read_csv" compatibility="10.3.001" expanded="true" height="68" name="Read E-commerce Geography CSV" width="90" x="45" y="85">
+        <parameter key="csv_file" value="input/ecommerce_geographic_raw.csv"/>
+        <parameter key="column_separator" value=","/>
+        <parameter key="first_row_as_names" value="true"/>
+        <parameter key="trim_lines" value="true"/>
+        <parameter key="use_quotes" value="true"/>
+        <parameter key="quotes_character" value="&quot;"/>
+        <parameter key="escape_character" value="\"/>
+        <parameter key="encoding" value="UTF-8"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.3.001" expanded="true" height="82" name="Generate Normalized Metrics" width="90" x="179" y="85">
+        <list key="function_descriptions">
+          <parameter key="whitespace_pct" value="100-coverage_pct"/>
+          <parameter key="sales_norm" value="min(ecomm_sales/92000000,1)"/>
+          <parameter key="orders_norm" value="min(online_orders/9600,1)"/>
+          <parameter key="growth_norm" value="min(growth_pct/25,1)"/>
+          <parameter key="potential_norm" value="market_potential/100"/>
+          <parameter key="whitespace_norm" value="(100-coverage_pct)/100"/>
+        </list>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.3.001" expanded="true" height="82" name="Calculate Priority Score" width="90" x="313" y="85">
+        <list key="function_descriptions">
+          <parameter key="priority_score" value="round(100*(0.28*sales_norm+0.20*orders_norm+0.20*growth_norm+0.20*potential_norm+0.12*whitespace_norm))"/>
+        </list>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="10.3.001" expanded="true" height="82" name="Classify Targeting Priority" width="90" x="447" y="85">
+        <list key="function_descriptions">
+          <parameter key="priority_tier" value="if(priority_score&gt;=72,&quot;Highest&quot;,if(priority_score&gt;=60,&quot;High&quot;,if(priority_score&gt;=45,&quot;Moderate&quot;,&quot;Low&quot;)))"/>
+          <parameter key="recommended_action" value="if(priority_score&gt;=70,&quot;Prioritize digital campaigns and field coverage review&quot;,if(priority_score&gt;=55,&quot;Test targeted campaigns and monitor conversion&quot;,&quot;Maintain baseline coverage and reassess quarterly&quot;))"/>
+        </list>
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="10.3.001" expanded="true" height="82" name="Select Published Fields" width="90" x="581" y="85">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attributes" value="|state_fips|state_abbr|state_name|territory|ecomm_sales|online_orders|growth_pct|market_potential|coverage_pct|whitespace_pct|priority_score|priority_tier|recommended_action"/>
+        <parameter key="include_special_attributes" value="true"/>
+      </operator>
+      <operator activated="true" class="write_csv" compatibility="10.3.001" expanded="true" height="82" name="Write Power BI Output" width="90" x="715" y="85">
+        <parameter key="csv_file" value="output/targeting_scored_output.csv"/>
+        <parameter key="column_separator" value=","/>
+        <parameter key="write_attribute_names" value="true"/>
+        <parameter key="quote_nominal_values" value="true"/>
+        <parameter key="format_date_attributes" value="true"/>
+        <parameter key="encoding" value="UTF-8"/>
+      </operator>
+      <connect from_op="Read E-commerce Geography CSV" from_port="output" to_op="Generate Normalized Metrics" to_port="example set input"/>
+      <connect from_op="Generate Normalized Metrics" from_port="example set output" to_op="Calculate Priority Score" to_port="example set input"/>
+      <connect from_op="Calculate Priority Score" from_port="example set output" to_op="Classify Targeting Priority" to_port="example set input"/>
+      <connect from_op="Classify Targeting Priority" from_port="example set output" to_op="Select Published Fields" to_port="example set input"/>
+      <connect from_op="Select Published Fields" from_port="example set output" to_op="Write Power BI Output" to_port="input"/>
+      <connect from_op="Write Power BI Output" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+    </process>
+  </operator>
+</process>
